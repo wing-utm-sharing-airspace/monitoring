@@ -38,6 +38,7 @@ Parameters:
 * `--area-lng`: Longitude of the center of the area in which to create flights
 * `--area-radius`: Radius (in meters) of the area in which to create flights
 * `--area-lat`: Maximum distance to cover for an individual flight
+* `--oi-duration`: Duration (in seconds) of the operational intent
 
 ### FlightsInSub.py
 
@@ -56,6 +57,25 @@ Parameters:
 * `--base-lng`: Longitude of the center of the first cluster
 * `--area-radius`: Radius (in meters) of the area in which to create flights
 * `--area-lat`: Maximum distance to cover for an individual flight
+* `--oi-duration`: Duration (in seconds) of the operational intent
+
+### scd_playback.py
+
+Send requests to the DSS based on traffic records in a csv file. The test is set
+up so that each user represents a seperate USS and replays that USS's traffic.
+It should be configured such that the number or users is equal to the number of
+base urls and csv files specified.
+
+Parameters:
+
+* `--uss-base-url`: Base URL of test USSs, multiple can be specified (e.g.
+  --uss-base-url uss1.com --uss-base-url uss2.com). Users will be alloted
+  distinct base URLs.
+* `--csv-file`: Path to CSV file containing requests for one USS, multiple files can be specified (e.g. --csv-file=file1.csv --csv-file=file2.csv). One User will execute the requests in each file.
+* `--original-data-start-time`: Unix timestamp (in seconds) of the original start time of the recorded data in the CSV file.
+* `--csv-start-delay`: Buffer (in seconds) to wait before replaying the first CSV request
+* `--sub-csv-file`: Path to CSV file containing subscriptions to pre-seed in the
+  DSS before replaying traffic
 
 ## Adjusting workload ratio
 For `ISA.py` and `Sub.py`, every action has a weight declared in the `@task(n)` decorator. You can adjust the value of `n` to suite your needs
