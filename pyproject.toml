@@ -46,7 +46,9 @@ dependencies = [
     "termcolor",
     "testcontainers",
     "uas-standards",
+    "uuid-extension>=0.2.0",
     "uuid6",
+    "uuid7-standard>=1.1.0",
 ]
 
 [dependency-groups]

@@ -889,7 +889,9 @@ dependencies = [
     { name = "termcolor" },
     { name = "testcontainers" },
     { name = "uas-standards" },
+    { name = "uuid-extension" },
     { name = "uuid6" },
+    { name = "uuid7-standard" },
 ]
 
 [package.dev-dependencies]
@@ -944,7 +946,9 @@ requires-dist = [
     { name = "termcolor" },
     { name = "testcontainers" },
     { name = "uas-standards" },
+    { name = "uuid-extension", specifier = ">=0.2.0" },
     { name = "uuid6" },
+    { name = "uuid7-standard", specifier = ">=1.1.0" },
 ]
 
 [package.metadata.requires-dev]
@@ -1869,12 +1873,30 @@ wheels = [
 ]
 
 [[package]]
+name = "uuid-extension"
+version = "0.2.0"
+source = { registry = "https://us-python.pkg.dev/artifact-foundry-prod/ah-3p-staging-python/simple/" }
+sdist = { url = "https://us-python.pkg.dev/artifact-foundry-prod/ah-3p-staging-python/uuid-extension/uuid_extension-0.2.0.tar.gz", hash = "sha256:e68907184276f47a4b169dc9891477693371b5f3756aebdaffb7cf83b9a6077e" }
+wheels = [
+    { url = "https://us-python.pkg.dev/artifact-foundry-prod/ah-3p-staging-python/uuid-extension/uuid_extension-0.2.0-py3-none-any.whl", hash = "sha256:8dac0d934afd07a16ae8537dd873bc833f1fcc31530295029d86c9cea49bf6a3" },
+]
+
+[[package]]
 name = "uuid6"
 version = "2025.0.1"
 source = { registry = "https://us-python.pkg.dev/artifact-foundry-prod/ah-3p-staging-python/simple/" }
 sdist = { url = "https://us-python.pkg.dev/artifact-foundry-prod/ah-3p-staging-python/uuid6/uuid6-2025.0.1.tar.gz", hash = "sha256:cd0af94fa428675a44e32c5319ec5a3485225ba2179eefcf4c3f205ae30a81bd" }
 wheels = [
     { url = "https://us-python.pkg.dev/artifact-foundry-prod/ah-3p-staging-python/uuid6/uuid6-2025.0.1-py3-none-any.whl", hash = "sha256:80530ce4d02a93cdf82e7122ca0da3ebbbc269790ec1cb902481fa3e9cc9ff99" },
+]
+
+[[package]]
+name = "uuid7-standard"
+version = "1.1.0"
+source = { registry = "https://us-python.pkg.dev/artifact-foundry-prod/ah-3p-staging-python/simple/" }
+sdist = { url = "https://us-python.pkg.dev/artifact-foundry-prod/ah-3p-staging-python/uuid7-standard/uuid7_standard-1.1.0.tar.gz", hash = "sha256:c7efdef8309265444fd11439bda8df10bd6469b56be62c1d3d78e014d16b4b9a" }
+wheels = [
+    { url = "https://us-python.pkg.dev/artifact-foundry-prod/ah-3p-staging-python/uuid7-standard/uuid7_standard-1.1.0-py3-none-any.whl", hash = "sha256:725f8f9202662dd6212df6b8caa1e101c2a61935261f43438bca842e058c5726" },
 ]
 
 [[package]]
