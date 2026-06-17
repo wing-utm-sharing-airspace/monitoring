@@ -87,6 +87,8 @@ def init_parser(parser: argparse.ArgumentParser):
           "Unix timestamp (in seconds) of the original start time of the"
           " recorded data in the CSV file."
       ),
+      dest="original_data_start_times",
+      action="append",
       required=True,
   )
   parser.add_argument(
@@ -98,6 +100,8 @@ def init_parser(parser: argparse.ArgumentParser):
   parser.add_argument(
       "--sub-csv-file",
       type=str,
+      dest="sub_csvs",
+      action="append",
       help="Path to CSV file containing subscriptions to pre-seed",
   )
 
@@ -120,11 +124,12 @@ class SCD(client.USS):
     print("New USS")
     print(f"CSV file: {self.csv_file}")
     print(f"USS base URL: {self.uss_base_url}")
-    self.original_data_start_time = (
-        self.environment.parsed_options.original_data_start_time
-    )
+    # each user takes one original start time
+    if self.environment.parsed_options.original_data_start_times:
+      self.original_data_start_time = self.environment.parsed_options.original_data_start_times.pop()
     self.csv_start_delay = self.environment.parsed_options.csv_start_delay
-    self.sub_csv_file = self.environment.parsed_options.sub_csv_file
+    if self.environment.parsed_options.sub_csvs:
+      self.sub_csv_file = self.environment.parsed_options.sub_csvs.pop()
     self.test_start_time = datetime.now(timezone.utc)
     if self.sub_csv_file:
       self._preseed_subscriptions()
@@ -302,7 +307,7 @@ class SCD(client.USS):
     offset = (
         self.test_start_time.timestamp()
         + self.csv_start_delay
-        - self.environment.parsed_options.original_data_start_time
+        - self.original_data_start_time
     )
 
     new_extents = []
@@ -336,7 +341,7 @@ class SCD(client.USS):
   def _shift_sub_extents(self, extent):
     offset = (
         self.test_start_time.timestamp()
-        - self.environment.parsed_options.original_data_start_time
+        - self.original_data_start_time
     )
 
     new_extent = extent.copy()
